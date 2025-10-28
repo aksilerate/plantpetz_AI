@@ -189,7 +189,7 @@ def ensure_client(api_key: Optional[str]) -> Optional["OpenAI"]:
         st.error("The `openai` package is not available. Install with `pip install openai`.")
         return None
     if not api_key:
-        st.warning("Please add your OpenAI API Key in the sidebar.")
+        st.warning("OpenAI API key missing. Set OPENAI_API_KEY in Streamlit Secrets.")
         return None
     try:
         return OpenAI(api_key=api_key)
@@ -300,8 +300,12 @@ if "auto_kickoff_image_id" not in st.session_state:
 # ---------------------------
 # Defaults
 # ---------------------------
-# API key: pull from env as default
-api_key = os.getenv("OPENAI_API_KEY", "")
+# API key: Streamlit Secrets first (Cloud), then env (local)
+api_key = (
+    st.secrets["OPENAI_API_KEY"]
+    if "OPENAI_API_KEY" in st.secrets
+    else os.getenv("OPENAI_API_KEY", "")
+)
 
 system_prompt = (
     "You are a expert in botany and plant care. "
