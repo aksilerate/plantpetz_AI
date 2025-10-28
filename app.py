@@ -373,7 +373,7 @@ with st.container():
         st.image(
             f"data:{st.session_state.image_mime};base64,{st.session_state.image_b64}",
             caption=st.session_state.image_name or "Image",
-            use_container_width=True,
+            width='stretch',
         )
         st.markdown("</div>", unsafe_allow_html=True)
 
