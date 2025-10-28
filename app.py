@@ -25,7 +25,7 @@ except Exception:
 st.set_page_config(
     page_title="PlantPetz AI",
     page_icon="🌿",
-    layout="wide",
+    layout="centered",
     menu_items={
         "About": "PlantPetz AI • Streamlit + OpenAI Vision"
     },
