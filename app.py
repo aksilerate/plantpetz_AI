@@ -301,7 +301,7 @@ if "auto_kickoff_image_id" not in st.session_state:
 # Defaults
 # ---------------------------
 # API key: pull from env as default
-default_key = os.getenv("OPENAI_API_KEY", "")
+api_key = os.getenv("OPENAI_API_KEY", "")
 
 system_prompt = (
     "You are a expert in botany and plant care. "
